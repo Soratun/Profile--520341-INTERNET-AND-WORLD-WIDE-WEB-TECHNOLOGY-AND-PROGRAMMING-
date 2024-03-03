@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyCal</title>
+    <link rel="stylesheet"href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <button class="btn" onclick="location.href='My.html'">Profile</button>
+    <button class="btn" onclick="location.href='review.html'">Review</button>
+    <button class="btn" onclick="location.href='EasyCal.html'">EasyCal</button>
+    <button class="btn" onclick="location.href='Easymath.html'">Easymath</button>
+    <button class="btn" onclick="location.href='multi.php?n=1'">multi</button>
+    <button class="btn" onclick="location.href='Palindrome.php'">Palindrome</button>
+    <button class="btn" onclick="location.href='./phonebook/phonebook.php'">Phonebook</button>
+    <button class="btn" onclick="location.href='./cookie/cookie.php'">cookie</button>
+    <script>
+        $(document).ready(function(){
+           $("#num1").keyup(cal);
+           $("#num2").keyup(cal);
+           $("#op").change(cal);
+           
+           function cal() {
+                var v1 = parseFloat($("#num1").val())||0;
+                var v2 = parseFloat($("#num2").val())||0;
+                var o = $("#op").val();
+                var result;
+
+                switch (o) {
+                    case '+':
+                        result = v1 + v2;
+                        break;
+                    case '-':
+                        result = v1 - v2;
+                        break;
+                    case '*':
+                        result = v1 * v2;
+                        break;
+                    case '/':
+                        if(v2 !== 0 ){
+                            result = v1/v2;
+                        }else{
+                            result = "Infinity";
+                        }
+                        break;
+                    case '%':
+                        result = v1 % v2;
+                        break;
+                                    }
+                $("#sum").val(result);
+           }
+        });
+    </script>
+</head>
+<body style="background-color: #fdc094;">
+    <H1 style="text-align: center;">EasyCal</H1>
+    <div style="text-align: center;height: 500px;width: 1000px;margin: 2rem auto;">
+        <input type="text" id="num1"style="text-align: center;height: 50px;width: 100px;margin: 2rem auto;">
+        <select id="op" style="text-align: center;height: 30px;width: 50px;margin: 2rem auto;font-size: 20px;"> 
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+            <option>%</option>
+        </select>   
+        <input type="text" id="num2"style="text-align: center;height: 50px;width: 100px;margin: 2rem auto;"> 
+        <p style="font-size:30px">=</p>
+        <input type="text" id="sum"style="text-align: center;height: 50px;width: 100px;margin: 2rem auto;">
+    </div>
+</body>
+</html>

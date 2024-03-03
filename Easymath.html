@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easymath</title>
+    <!-- <link rel="stylesheet"href="style.css"> -->
+    <button class="btn1" onclick="location.href='My.html'">Profile</button>
+    <button class="btn1" onclick="location.href='review.html'">Review</button>
+    <button class="btn1" onclick="location.href='EasyCal.html'">EasyCal</button>
+    <button class="btn1" onclick="location.href='Easymath.html'">Easymath</button>
+    <button class="btn1" onclick="location.href='multi.php?n=1'">multi</button>
+    <button class="btn1" onclick="location.href='Palindrome.php'">Palindrome</button>
+    <button class="btn1" onclick="location.href='./phonebook/phonebook.php'">Phonebook</button>
+    <button class="btn1" onclick="location.href='./cookie/cookie.php'">cookie</button>
+
+    <style>
+        button{
+            padding: 20px 50px;
+            font-size: 5px;
+            cursor: pointer;
+            border: 0px;
+            background: transparent;
+            position: relative;
+        }
+        .btn1:hover::after{
+            transform: translate(-5px,-5px);
+        }
+        .btn1:hover::before{
+            transform: translate(5px,5px);
+        }
+        .btn1::after,.btn1::before{
+            content: "";
+            border: 3px solid #0B0742;
+            position: absolute;
+            border-radius: inherit;
+            width: calc(100% - 3px);
+            height: calc(100% - 3px);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: all 0.25s ease;
+        }
+    </style>
+    <script>
+        function roandom() {
+            let o = "";
+            let  op= "+-";
+            o += op.charAt(Math.floor(Math.random() * op.length));
+            return o;
+        }
+        function aa() {
+            let te1 = Number($("#test1").text());
+            let te2 = Number($("#test2").text());
+            var op = $("#op").text();
+            var sum;
+            switch (op) {
+                case '+':
+                    sum = te1 + te2;
+                    break;
+                case '-':
+                    sum = te1 - te2;
+                    break;
+            }
+            return sum;
+        }
+        $(document).ready(function(){
+            $("#hd").hide();
+            $("#btn1").click(function(){
+                $("#hd").show();
+                var te1 = Math.floor(Math.random() * 100);
+                var te2 = Math.floor(Math.random() * 100);
+                var op = roandom();
+                $("#test1").text(te1),$("#op").text(op),$("#test2").text(te2);  
+                $("#test3").val("");
+                $("#sum").text(""); 
+                $("#icon").html("");         
+            });
+            $("#btn2").click(function(){
+                var te3 = parseFloat($("#test3").val());
+                var sum = aa();
+                if(te3 == sum){
+                    $("#icon").html("<span class='glyphicon glyphicon-ok text-success'></span>");
+                }else{
+                    $("#icon").html("<span class='glyphicon glyphicon-remove text-danger'></span>");
+                }
+            });
+            $("#btn3").click(function(){
+                $("#sum").text(aa());
+            });
+        });
+    </script>
+</head>
+<body style="background-color: #FF9190;">
+    <br><br>
+    <div style="text-align: center;">
+        <button class="btn btn-info btn-lg" id="btn1" type="button" style="size: 50%;">NEN</button>
+    </div><br>
+    <div id="hd">
+        <div class="row"> 
+            <p class="col-sm-2"style="font-size: 100px;"></p>
+            <p class="col-sm-2" id="test1" style="font-size: 100px;"></p>
+            <p class="col-sm-2" id="op" style="font-size: 100px;text-align: center;"></p>
+            <p class="col-sm-2" id="test2"style="font-size: 100px;"></p>
+            <p class="col-sm-2" style="font-size: 100px;text-align: center;" > = ?</p>
+        </div>
+        <br>
+        <div class="row"  style="height: 150px;width: 500%; padding: 25px 250px 75px 450px;">
+            <input class="col-sm-4" rows="5" id="test3" type="text" style="font-size: 50px; text-align: center;height: 100px;width: 300px;">
+            <p class="col-sm-4"><span id="icon" style="font-size: 100px;"></span></p>
+        </div>
+        <br>
+        <div class="row"> 
+            <button class="col-sm-4 btn btn-primary btn-lg" id="btn2" type="button" text-align: center;>CHECK</button>
+            <button class="col-sm-4 btn btn-success btn-lg" id="btn3" type="button" text-align: center;>ANS</button>
+        </div>
+        <br>
+        <p id="sum" style="text-align: center; font-size: 100px;"></p>
+    </div>
+</body>
+</html>
